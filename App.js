@@ -2,9 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import * as firebase from 'firebase'
 
+require('dotenv').config()
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCeEqToJFVlFUTkVPdLNRNw32FLzj7Z2wM",
+  apiKey: "process.env.REACT_APP_API_KEY",
   authDomain: "noted-demo.firebaseapp.com",
   projectId: "noted-demo",
   storageBucket: "noted-demo.appspot.com",
@@ -12,6 +13,7 @@ const firebaseConfig = {
   appId: "1:374976912400:web:6e9d1a2fcf864b9d113e95",
   measurementId: "G-16QWP43EDJ"
 };
+
 
 if(firebase.apps.length === 0){
   firebase.initializeApp(firebaseConfig)
