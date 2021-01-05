@@ -14,6 +14,7 @@ import {createStackNavigator} from '@react-navigation/stack'
 import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/register'
 import LoginScreen from './components/auth/Login'
+import HomeScreen from './components/home/Home'
 
 const Stack = createStackNavigator();
 
@@ -62,13 +63,18 @@ export class App extends Component {
       );
     }
     return (
-      <View style={{ flex: 1, justifyContent: 'center'}}>
-          <Text>User is logged in.</Text>
-        </View>
+      
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Homepage">
+          <Stack.Screen name="Home" component={HomeScreen}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+  
+
     )
+
   }
 }
-
 export default App
 
 
