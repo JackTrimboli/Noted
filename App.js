@@ -1,13 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { Component } from 'react'
 import * as firebase from 'firebase'
-
-
 import { firebaseConfig } from './firebase-config.js'
 if(firebase.apps.length === 0){
   firebase.initializeApp(firebaseConfig)
 }
-
 import { StyleSheet, Text, View } from 'react-native'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -24,7 +21,6 @@ export class App extends Component {
     super(props);
     this.state = {
       loaded: false,
-
     }
   }
   componentDidMount(){
@@ -63,7 +59,6 @@ export class App extends Component {
       );
     }
     return (
-      
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Homepage">
           <Stack.Screen name="Home" component={HomeScreen}/>

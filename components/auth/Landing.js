@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet,Text, View, Button } from 'react-native'
-
+import {Center} from '/Users/jacktrimboli/Desktop/App/components/other/Center.jsx'
 export default function Landing({ navigation }) {
     return (
-        <View style={styles.container}>
+        <Center >
             <View style={styles.btn}>
               <Button
                 title="Register"
@@ -12,14 +12,12 @@ export default function Landing({ navigation }) {
                 title="Login"
                 onPress={() =>navigation.navigate("Login")}/>
             </View>
-        </View>
+        </Center>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
         backgroundColor: 'steelblue',
     },
     header:{
