@@ -3,32 +3,29 @@ import { StyleSheet,Text, View, Button } from 'react-native'
 import {Center} from '/Users/jacktrimboli/Desktop/App/components/other/Center.jsx'
 export default function Landing({ navigation }) {
     return (
-        <Center >
-            <View style={styles.btn}>
+        <View style={styles.container}>
               <Button
                 title="Register"
-                onPress={() =>navigation.navigate("Register")}/>
+                onPress={() =>navigation.navigate("Register")}
+                style={styles.btn}
+                />
               <Button
                 title="Login"
-                onPress={() =>navigation.navigate("Login")}/>
-            </View>
-        </Center>
+                onPress={() =>navigation.navigate("Login")}
+                style={styles.btn}
+                />
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'steelblue',
+    container:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'ivory',
     },
-    header:{
-        color: '#fff',
-        marginTop: '30px',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-    },
-    btn: {
-        marginLeft: '12px',
-        marginRight: '12px',
+    btn:{
+        borderRadius: '50px'
     }
-    
 });

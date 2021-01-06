@@ -17,7 +17,7 @@ import LoginScreen from './components/auth/Login'
 import MainScreen from './components/Main'
 
 
-import { Provider } from 'redux'
+import { Provider } from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
