@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput } from 'react-native'
 import firebase from 'firebase'
+import { Center } from '../other/Center'
 export class Register extends Component {
     constructor(props){
         super(props);
@@ -15,7 +16,14 @@ export class Register extends Component {
     onSignUp(){
         const { email, password, name} = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
+
         .then((result) => {
+            firebase.firestore().collection("users")
+                .doc(firebase.auth().currentUser.uid)
+                .set({
+                    name,
+                    email
+                })
             console.log(result)
         })
         .catch((error) =>{
@@ -24,7 +32,7 @@ export class Register extends Component {
     }
     render() {
         return (
-            <View>
+            <Center>
                 <TextInput
                     placeholder="Name"
                     onChangeText={(name) => this.setState({ name })}
@@ -42,7 +50,7 @@ export class Register extends Component {
                     onPress={() => this.onSignUp()}
                     title="Sign Up"
                 />
-            </View>
+            </Center>
         )
     }
 }

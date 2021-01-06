@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View, Button, TextInput } from 'react-native'
 import firebase from 'firebase'
+import { Center } from '../other/Center'
+
 export class Login extends Component {
     constructor(props){
         super(props);
@@ -23,7 +25,7 @@ export class Login extends Component {
     }
     render() {
         return (
-            <View>
+            <Center>
                 <TextInput
                     placeholder="Email"
                     onChangeText={(email) => this.setState({ email })}
@@ -37,7 +39,7 @@ export class Login extends Component {
                     onPress={() => this.onSignUp()}
                     title="Sign in"
                 />
-            </View>
+            </Center>
         )
     }
 }

@@ -1,18 +1,29 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+
 import * as firebase from 'firebase'
 import { firebaseConfig } from './firebase-config.js'
 if(firebase.apps.length === 0){
   firebase.initializeApp(firebaseConfig)
 }
-import { StyleSheet, Text, View } from 'react-native'
+
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
+
 import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/register'
 import LoginScreen from './components/auth/Login'
-import HomeScreen from './components/home/Home'
+import MainScreen from './components/Main'
 
+
+import { Provider } from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import rootReducer from './redux/reducers'
+import thunk from 'redux-thunk'
+import Center from './components/other/Center.jsx'
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
 const Stack = createStackNavigator();
 
 
@@ -42,9 +53,9 @@ export class App extends Component {
     const{ loggedIn, loaded } = this.state
     if(!loaded){
       return(
-        <View style={{ flex: 1, justifyContent: 'center'}}>
-          <Text>Loading</Text>
-        </View>
+        <Center>
+          <Text>Loading...</Text>
+        </Center>
       )
     }
     if(!loggedIn){
@@ -59,13 +70,9 @@ export class App extends Component {
       );
     }
     return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Homepage">
-          <Stack.Screen name="Home" component={HomeScreen}/>
-        </Stack.Navigator>
-      </NavigationContainer>
-  
-
+      <Provider store={store}>
+        <MainScreen/>
+      </Provider>
     )
 
   }
